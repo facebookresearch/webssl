@@ -35,7 +35,7 @@ def build_pt_transform():
 
 if __name__ == '__main__':
     hf_model_name = 'facebook/webssl-dino1b-full2b-224'
-    pt_model_path = '/checkpoint/amaia/video/davidfan/experiments/dinov2_scaling/metaclipv2/vitg14/16_node/2b_iter/job_1617224/eval/training_649999/teacher_checkpoint.pth'
+    pt_model_path = 'YOUR_LOCAL_PATH/teacher_checkpoint.pth'
     kwargs = dict(
         patch_size=14,
         ffn_layer='swiglu',

@@ -2,16 +2,16 @@
 
 Official inference code for the **Web-SSL** family of models introduced in our work: [Scaling Language-Free Visual Representation Learning](https://arxiv.org/abs/2504.01017).
 
-[David Fan](https://davidfan.io)<sup>1,* </sup>, [Shengbang Tong](https://tsb0601.github.io/)<sup>1,2,*</sup>, [Jiachen Zhu](https://jiachenzhu.github.io)<sup>1,2</sup>, [Koustuv Sinha](https://koustuvsinha.com/)<sup>1</sup>, [Zhuang Liu](https://liuzhuang13.github.io)<sup>1,3</sup>, [Xinlei Chen](https://xinleic.xyz/)<sup>1</sup>, [Michael Rabbat](https://scholar.google.com/citations?user=cMPKe9UAAAAJ)<sup>1</sup>, [Nicolas Ballas](https://scholar.google.com/citations?user=euUV4iUAAAAJ)<sup>1</sup>, [Yann LeCun](http://yann.lecun.com)<sup>1,2</sup>, [Amir Bar](https://www.amirbar.net/)<sup>1,†</sup>, [Saining Xie](https://www.sainingxie.com/)<sup>2,†</sup>
+[David Fan](https://davidfan.io)<sup>* </sup>, [Shengbang Tong](https://tsb0601.github.io/)<sup>*</sup>, [Jiachen Zhu](https://jiachenzhu.github.io), [Koustuv Sinha](https://koustuvsinha.com/), [Zhuang Liu](https://liuzhuang13.github.io), [Xinlei Chen](https://xinleic.xyz/), [Michael Rabbat](https://scholar.google.com/citations?user=cMPKe9UAAAAJ), [Nicolas Ballas](https://scholar.google.com/citations?user=euUV4iUAAAAJ), [Yann LeCun](http://yann.lecun.com), [Amir Bar](https://www.amirbar.net/)<sup>†</sup>, [Saining Xie](https://www.sainingxie.com/)<sup>†</sup>
 
-<sup>1</sup>FAIR, Meta, <sup>2</sup>New York University, <sup>3</sup>Princeton University  
+FAIR Meta, New York University, Princeton University  
 <sup>*</sup>equal contribution, <sup>†</sup>equal advising
 
 [<img src="https://img.shields.io/badge/arXiv-2504.01017-b31b1b.svg" height="22">](https://arxiv.org/abs/2504.01017)
 [<img src="https://img.shields.io/badge/Project-Page-blue" height="22">](https://davidfan.io/webssl/)
 
 <p align="center">
-<img src="https://davidfan.io/webssl/assets/figures/fig1_simple_v2.png" width=50% height=50% 
+<img src="https://davidfan.io/webssl/assets/figures/fig1_simple_v2.png" width=75% height=75% 
 class="center">
 </p>
 
@@ -261,7 +261,7 @@ See [demo.py](demo.py) for a complete example comparing HuggingFace and PyTorch 
 
 ## Citation
 
-If you find this repository useful for your research, please consider citing our paper:
+If you find this repository useful for your research, please consider citing:
 
 ```bibtex
 @article{fan2025scaling,

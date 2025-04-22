@@ -16,15 +16,32 @@ class="center">
 </p>
 
 
-## Available Models
+## Overview
+
+Web-SSL explores the scaling potential of visual self-supervised learning (SSL) on web-scale data, offering strong alternatives for both multimodal modeling and classic vision tasks. Our work demonstrates that by scaling model size and training data, vision-only models can match and even surpass language-supervised methods like CLIP, challenging the common assumption that language supervision is necessary for strong visual representations.
+
+Key findings:
+- 📈 Visual SSL scales efficiently with both model capacity and data, with performance continuing to improve up to 7B parameters
+- 🔍 Web-SSL matches or exceeds language-supervised methods on a wide range of VQA tasks—even on language-related tasks like OCR & Chart understanding
+- 🖼️ Our models maintain competitive performance on classic vision tasks like classification and segmentation while excelling at multimodal tasks
+- 📊 Visual SSL methods are senstive to data distribution! Training on filtered datasets with higher concentration of text-rich images substantially improves OCR & Chart capabilities
+
+## Our Models
+
 ### Web-DINO Models
+
+#### Standard Models
+
+Web-DINO models train DINO models on larger scale web data and scaled networks. 
+
 <table>
   <tr>
-    <th colspan="1">model</th>
-    <th colspan="1">patch size</th>
-    <th colspan="1">resolution</th>
-    <th colspan="1">data</th>
-    <th colspan="2">download</th>
+    <th>Model</th>
+    <th>Patch Size</th>
+    <th>Resolution</th>
+    <th>Data</th>
+    <th colspan="2">Download</th>
+    <th>Notes</th>
   </tr>
   <tr>
     <td>webssl-dino300m-full2b-224</td>
@@ -33,6 +50,7 @@ class="center">
     <td>2B (MC-2B)</td>
     <td><a href="https://huggingface.co/facebook/webssl-dino300m-full2b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_dino300m_full2b_224.pth">PyTorch Weights</a></td>
+    <td></td>
   </tr>
   <tr>
     <td>webssl-dino1b-full2b-224</td>
@@ -41,6 +59,7 @@ class="center">
     <td>2B (MC-2B)</td>
     <td><a href="https://huggingface.co/facebook/webssl-dino1b-full2b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_dino1b_full2b_224.pth">PyTorch Weights</a></td>
+    <td></td>
   </tr>
   <tr>
     <td>webssl-dino2b-full2b-224</td>
@@ -49,6 +68,7 @@ class="center">
     <td>2B (MC-2B)</td>
     <td><a href="https://huggingface.co/facebook/webssl-dino2b-full2b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_dino2b_full2b_224.pth">PyTorch Weights</a></td>
+    <td></td>
   </tr>
   <tr>
     <td>webssl-dino3b-full2b-224</td>
@@ -57,6 +77,7 @@ class="center">
     <td>2B (MC-2B)</td>
     <td><a href="https://huggingface.co/facebook/webssl-dino3b-full2b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_dino3b_full2b_224.pth">PyTorch Weights</a></td>
+    <td></td>
   </tr>
   <tr>
     <td>webssl-dino5b-full2b-224</td>
@@ -65,30 +86,51 @@ class="center">
     <td>2B (MC-2B)</td>
     <td><a href="https://huggingface.co/facebook/webssl-dino5b-full2b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_dino5b_full2b_224.pth">PyTorch Weights</a></td>
+    <td></td>
   </tr>
-  <tr>
-    <td>webssl-dino7b-full8b-224</td>
+  <tr style="font-weight: bold;">
+    <td>webssl-dino7b-full8b-224 ⭐</td>
     <td>14x14</td>
     <td>224x224</td>
     <td>8B (MC-2B)</td>
     <td><a href="https://huggingface.co/facebook/webssl-dino7b-full8b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_dino7b_full8b_224.pth">PyTorch Weights</a></td>
+    <td>Best standard resolution model</td>
   </tr>
-  <tr>
-    <td>webssl-dino7b-full8b-384</td>
+  <tr style="font-weight: bold;">
+    <td>webssl-dino7b-full8b-384 ⭐</td>
     <td>14x14</td>
     <td>384x384</td>
     <td>8B (MC-2B)</td>
     <td><a href="https://huggingface.co/facebook/webssl-dino7b-full8b-384">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_dino7b_full8b_384.pth">PyTorch Weights</a></td>
+    <td>Better performance with higher resolution</td>
   </tr>
-  <tr>
-    <td>webssl-dino7b-full8b-518</td>
+  <tr style="font-weight: bold;">
+    <td>webssl-dino7b-full8b-518 ⭐</td>
     <td>14x14</td>
     <td>518x518</td>
     <td>8B (MC-2B)</td>
     <td><a href="https://huggingface.co/facebook/webssl-dino7b-full8b-518">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_dino7b_full8b_518.pth">PyTorch Weights</a></td>
+    <td>Best overall performance (highest resolution)</td>
+  </tr>
+</table>
+
+#### Filtered Data Models
+
+
+These models were trained on filtered subsets of MC-2B data, with special focus on images containing text to enhance OCR & Chart understanding capabilities.
+
+
+<table>
+  <tr>
+    <th>Model</th>
+    <th>Patch Size</th>
+    <th>Resolution</th>
+    <th>Data</th>
+    <th colspan="2">Download</th>
+    <th>Notes</th>
   </tr>
   <tr>
     <td>webssl-dino2b-light2b-224</td>
@@ -97,6 +139,7 @@ class="center">
     <td>2B (MC-2B light)</td>
     <td><a href="https://huggingface.co/facebook/webssl-dino2b-light2b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_dino2b_light2b_224.pth">PyTorch Weights</a></td>
+    <td>Trained on 50.3% of MC-2B containing text</td>
   </tr>
   <tr>
     <td>webssl-dino2b-heavy2b-224</td>
@@ -105,6 +148,7 @@ class="center">
     <td>2B (MC-2B heavy)</td>
     <td><a href="https://huggingface.co/facebook/webssl-dino2b-heavy2b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_dino2b_heavy2b_224.pth">PyTorch Weights</a></td>
+    <td>Trained on 1.3% of MC-2B focused on charts/documents</td>
   </tr>
   <tr>
     <td>webssl-dino3b-light2b-224</td>
@@ -113,6 +157,7 @@ class="center">
     <td>2B (MC-2B light)</td>
     <td><a href="https://huggingface.co/facebook/webssl-dino3b-light2b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_dino3b_light2b_224.pth">PyTorch Weights</a></td>
+    <td>Trained on 50.3% of MC-2B containing text</td>
   </tr>
   <tr>
     <td>webssl-dino3b-heavy2b-224</td>
@@ -121,18 +166,22 @@ class="center">
     <td>2B (MC-2B heavy)</td>
     <td><a href="https://huggingface.co/facebook/webssl-dino3b-heavy2b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_dino3b_heavy2b_224.pth">PyTorch Weights</a></td>
+    <td>Trained on 1.3% of MC-2B focused on charts/documents</td>
   </tr>
 </table>
 
-  ### Web-MAE Models
+### Web-MAE Models
 
-  <table>
+Web-MAE models train MAE models on larger scale web data and scaled networks.  
+
+<table>
   <tr>
-    <th colspan="1">model</th>
-    <th colspan="1">patch size</th>
-    <th colspan="1">resolution</th>
-    <th colspan="1">data</th>
-    <th colspan="2">download</th>
+    <th>Model</th>
+    <th>Patch Size</th>
+    <th>Resolution</th>
+    <th>Data</th>
+    <th colspan="2">Download</th>
+    <th>Notes</th>
   </tr>
   <tr>
     <td>webssl-mae300m-full2b-224</td>
@@ -141,6 +190,7 @@ class="center">
     <td>2B (MC-2B)</td>
     <td><a href="https://huggingface.co/facebook/webssl-mae300m-full2b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_mae300m_full2b_224.pth">PyTorch Weights</a></td>
+    <td></td>
   </tr>
   <tr>
     <td>webssl-mae700m-full2b-224</td>
@@ -149,6 +199,7 @@ class="center">
     <td>2B (MC-2B)</td>
     <td><a href="https://huggingface.co/facebook/webssl-mae700m-full2b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_mae700m_full2b_224.pth">PyTorch Weights</a></td>
+    <td></td>
   </tr>
   <tr>
     <td>webssl-mae1b-full2b-224</td>
@@ -157,6 +208,7 @@ class="center">
     <td>2B (MC-2B)</td>
     <td><a href="https://huggingface.co/facebook/webssl-mae1b-full2b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_mae1b_full2b_224.pth">PyTorch Weights</a></td>
+    <td></td>
   </tr>
   <tr>
     <td>webssl-mae2b-full2b-224</td>
@@ -165,6 +217,7 @@ class="center">
     <td>2B (MC-2B)</td>
     <td><a href="https://huggingface.co/facebook/webssl-mae2b-full2b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_mae2b_full2b_224.pth">PyTorch Weights</a></td>
+    <td></td>
   </tr>
   <tr>
     <td>webssl-mae3b-full2b-224</td>
@@ -173,6 +226,7 @@ class="center">
     <td>2B (MC-2B)</td>
     <td><a href="https://huggingface.co/facebook/webssl-mae3b-full2b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_mae3b_full2b_224.pth">PyTorch Weights</a></td>
+    <td></td>
   </tr>
   <tr>
     <td>webssl-mae7b-full2b-224</td>
@@ -181,8 +235,10 @@ class="center">
     <td>8B (MC-2B)</td>
     <td><a href="https://huggingface.co/facebook/webssl-mae7b-full2b-224">HuggingFace</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_mae7b_full2b_224.pth">PyTorch Weights</a></td>
+    <td></td>
   </tr>
 </table>
+
 
 
 
@@ -190,7 +246,7 @@ class="center">
 
 ### Loading pretrained models
 
-We provide two ways to use our models:
+We provide two examples to use our models:
 
 #### 1. Using HuggingFace Transformers
 
@@ -272,3 +328,6 @@ If you find this repository useful for your research, please consider citing:
 }
 ```
 
+## Acknowledgements
+
+We thank the [DINOv2](https://github.com/facebookresearch/dinov2) and [MAE](https://github.com/facebookresearch/mae) teams for their excellent codebases, and the [MetaCLIP](https://github.com/facebookresearch/MetaCLIP) team for the MetaCLIP dataset.

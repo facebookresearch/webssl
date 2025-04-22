@@ -58,7 +58,6 @@ if __name__ == '__main__':
 
     with torch.no_grad():
         im = Image.open('sample_images/bird.JPEG')
-        # x = torch.rand(1, 3, 224, 224).cuda()
         x_pt = pt_transform(im).cuda().unsqueeze(0)
         x_hf = hf_transform(im, return_tensors="pt").to("cuda")
         out_patch_features_pt = model_pt.forward_features(x_pt)['x_norm_patchtokens']

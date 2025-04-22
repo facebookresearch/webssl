@@ -163,19 +163,11 @@ class="center">
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_mae3b_full2b_224.pth">PyTorch Weights</a></td>
   </tr>
   <tr>
-    <td>webssl-dino5b-full2b-224</td>
-    <td>14x14</td>
-    <td>224x224</td>
-    <td>2B (MC-2B)</td>
-    <td><a href="https://huggingface.co/facebook/webssl-dino5b-full2b-224">HuggingFace</a></td>
-    <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_dino5b_full2b_224.pth">PyTorch Weights</a></td>
-  </tr>
-  <tr>
-    <td>webssl-mae7b-full8b-224</td>
+    <td>webssl-mae7b-full2b-224</td>
     <td>14x14</td>
     <td>224x224</td>
     <td>8B (MC-2B)</td>
-    <td><a href="https://huggingface.co/facebook/webssl-mae7b-full8b-224">HuggingFace</a></td>
-    <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_mae7b_full8b_224.pth">PyTorch Weights</a></td>
+    <td><a href="https://huggingface.co/facebook/webssl-mae7b-full2b-224">HuggingFace</a></td>
+    <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_mae7b_full2b_224.pth">PyTorch Weights</a></td>
   </tr>
 </table>

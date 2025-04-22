@@ -139,6 +139,14 @@ class="center">
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_mae300m_full2b_224.pth">PyTorch Weights</a></td>
   </tr>
   <tr>
+    <td>webssl-mae700m-full2b-224</td>
+    <td>14x14</td>
+    <td>224x224</td>
+    <td>2B (MC-2B)</td>
+    <td><a href="https://huggingface.co/facebook/webssl-mae700m-full2b-224">HuggingFace</a></td>
+    <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_mae700m_full2b_224.pth">PyTorch Weights</a></td>
+  </tr>
+  <tr>
     <td>webssl-mae1b-full2b-224</td>
     <td>14x14</td>
     <td>224x224</td>

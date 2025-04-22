@@ -1,13 +1,17 @@
 # Web-SSL: Scaling Language-Free Visual Representation Learning
-Official inference code for the Web-SSL family of models.
 
-[David Fan](https://davidfan.io), [Shengbang Tong](https://tsb0601.github.io/), [Jiachen Zhu](https://jiachenzhu.github.io), [Koustuv Sinha](https://koustuvsinha.com/), [Zhuang Liu](https://liuzhuang13.github.io), [Xinlei Chen](https://xinleic.xyz/), [Michael Rabbat](https://scholar.google.com/citations?user=cMPKe9UAAAAJ), [Nicolas Ballas](https://scholar.google.com/citations?user=euUV4iUAAAAJ), [Yann LeCun](http://yann.lecun.com), [Amir Bar](https://www.amirbar.net/), [Saining Xie](https://www.sainingxie.com/)
+Official inference code for the **Web-SSL** family of models introduced in our work: [Scaling Language-Free Visual Representation Learning](https://arxiv.org/abs/2504.01017).
 
-Meta FAIR, NYU, Princeton \
-[[`arXiv`](https://arxiv.org/abs/2504.01017)][[`project page`](https://davidfan.io/webssl/)]
+[David Fan](https://davidfan.io)<sup>1,* </sup>, [Shengbang Tong](https://tsb0601.github.io/)<sup>1,2,*</sup>, [Jiachen Zhu](https://jiachenzhu.github.io)<sup>1,2</sup>, [Koustuv Sinha](https://koustuvsinha.com/)<sup>1</sup>, [Zhuang Liu](https://liuzhuang13.github.io)<sup>1,3</sup>, [Xinlei Chen](https://xinleic.xyz/)<sup>1</sup>, [Michael Rabbat](https://scholar.google.com/citations?user=cMPKe9UAAAAJ)<sup>1</sup>, [Nicolas Ballas](https://scholar.google.com/citations?user=euUV4iUAAAAJ)<sup>1</sup>, [Yann LeCun](http://yann.lecun.com)<sup>1,2</sup>, [Amir Bar](https://www.amirbar.net/)<sup>1,†</sup>, [Saining Xie](https://www.sainingxie.com/)<sup>2,†</sup>
+
+<sup>1</sup>FAIR, Meta, <sup>2</sup>New York University, <sup>3</sup>Princeton University  
+<sup>*</sup>equal contribution, <sup>†</sup>equal advising
+
+[<img src="https://img.shields.io/badge/arXiv-2504.01017-b31b1b.svg" height="22">](https://arxiv.org/abs/2504.01017)
+[<img src="https://img.shields.io/badge/Project-Page-blue" height="22">](https://davidfan.io/webssl/)
 
 <p align="center">
-<img src="https://davidfan.io/webssl/assets/figures/fig1_simple_v2.png" width=75% height=75% 
+<img src="https://davidfan.io/webssl/assets/figures/fig1_simple_v2.png" width=50% height=50% 
 class="center">
 </p>
 
@@ -179,3 +183,92 @@ class="center">
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_mae7b_full2b_224.pth">PyTorch Weights</a></td>
   </tr>
 </table>
+
+
+
+## Usage
+
+### Loading pretrained models
+
+We provide two ways to use our models:
+
+#### 1. Using HuggingFace Transformers
+
+```python
+from transformers import AutoImageProcessor, Dinov2Model
+
+# Load a Web-DINO model
+model_name = "facebook/webssl-dino1b-full2b-224"
+processor = AutoImageProcessor.from_pretrained(model_name)
+model = Dinov2Model.from_pretrained(model_name)
+
+# Process an image
+from PIL import Image
+import requests
+
+image = Image.open("path/to/image.jpg")
+inputs = processor(images=image, return_tensors="pt")
+outputs = model(**inputs)
+last_hidden_states = outputs.last_hidden_state
+```
+
+#### 2. Using PyTorch with original weights
+
+```python
+from dinov2.vision_transformer import vit_1b
+import torch
+from PIL import Image
+from torchvision import transforms
+
+# Define image transformation
+transform = transforms.Compose([
+    transforms.Resize(256, interpolation=transforms.InterpolationMode.BICUBIC),
+    transforms.CenterCrop(224),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
+])
+
+# Load model
+model = vit_1b(
+    patch_size=14,
+    ffn_layer='swiglu',
+    init_values=1.0e-05,
+    block_chunks=4,
+    qkv_bias=True,
+    proj_bias=True,
+    ffn_bias=True,
+    interpolate_offset=0.1,
+    interpolate_antialias=False
+)
+
+# Load weights
+checkpoint_path = "path/to/downloaded/weights.pth"
+state_dict = torch.load(checkpoint_path, map_location="cpu")
+msg = model.load_state_dict(state_dict, strict=False)
+model.eval()
+
+# Process an image
+image = Image.open("path/to/image.jpg")
+x = transform(image).unsqueeze(0)
+with torch.no_grad():
+    features = model.forward_features(x)
+    patch_features = features['x_norm_patchtokens']
+```
+
+See [demo.py](demo.py) for a complete example comparing HuggingFace and PyTorch implementations.
+
+
+
+## Citation
+
+If you find this repository useful for your research, please consider citing our paper:
+
+```bibtex
+@article{fan2025scaling,
+  title={Scaling Language-Free Visual Representation Learning},
+  author={Fan, David and Tong, Shengbang and Zhu, Jiachen and Sinha, Koustuv and Liu, Zhuang and Chen, Xinlei and Rabbat, Michael and Ballas, Nicolas and LeCun, Yann and Bar, Amir and others},
+  journal={arXiv preprint arXiv:2504.01017},
+  year={2025}
+}
+```
+

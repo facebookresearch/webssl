@@ -228,15 +228,6 @@ Web-MAE models train MAE models on larger scale web data and scaled networks.
     <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_mae3b_full2b_224.pth">PyTorch Weights</a></td>
     <td></td>
   </tr>
-  <tr>
-    <td>webssl-mae7b-full2b-224</td>
-    <td>14x14</td>
-    <td>224x224</td>
-    <td>8B (MC-2B)</td>
-    <td><a href="https://huggingface.co/facebook/webssl-mae7b-full2b-224">HuggingFace</a></td>
-    <td><a href="https://dl.fbaipublicfiles.com/webssl/webssl_mae7b_full2b_224.pth">PyTorch Weights</a></td>
-    <td></td>
-  </tr>
 </table>
 
 

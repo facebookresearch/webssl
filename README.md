@@ -48,7 +48,7 @@ Web-DINO is a family of DINOv2 models ranging from 0.3B to 7B parameters trained
 
 **Model Notes:**
 - **webssl-dino7b-full8b-224** ⭐: Best 224x224 resolution model
-- **webssl-dino7b-full8b-378** ⭐: Better performance with 384x384 resolution
+- **webssl-dino7b-full8b-378** ⭐: Better performance with 378x378 resolution
 - **webssl-dino7b-full8b-518** ⭐: Best overall performance with 518x518 resolution
 
 #### Filtered Data Models
@@ -78,6 +78,10 @@ Web-MAE is a family of MAE models ranging from 0.3B to 3B parameters, trained on
 | webssl-mae2b-full2b-224 | 14x14 | 224x224 | 2B (MC-2B) | [Link](https://huggingface.co/facebook/webssl-mae2b-full2b-224) | [Link](https://dl.fbaipublicfiles.com/webssl/webssl_mae2b_full2b_224.pth) |
 | webssl-mae3b-full2b-224 | 14x14 | 224x224 | 2B (MC-2B) | [Link](https://huggingface.co/facebook/webssl-mae3b-full2b-224) | [Link](https://dl.fbaipublicfiles.com/webssl/webssl_mae3b_full2b_224.pth) |
 
+
+### Additional Models
+
+In response to community feedback, we are open-sourcing a few add-ons that are not part of the official release. Please see [ADDITIONAL_MODELS.md](ADDITIONAL_MODELS.md) for more details.
 
 ## Installation
 It is possible that older or newer versions will work. However, we haven't tested them for this inference code.

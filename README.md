@@ -138,13 +138,7 @@ transform = transforms.Compose([
 ])
 
 # Load model
-model = webssl_dino1b_full2b_224()
-
-# Load weights
-checkpoint_path = "path/to/downloaded/weights.pth"
-state_dict = torch.load(checkpoint_path, map_location="cpu")
-msg = model.load_state_dict(state_dict, strict=False)
-print(f"Loaded weights: {msg}")
+model = webssl_dino1b_full2b_224(pretrained=True)
 model.cuda().eval()
 
 # Process an image

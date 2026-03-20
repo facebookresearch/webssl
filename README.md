@@ -57,6 +57,7 @@ These models were trained on filtered subsets of MC-2B images with a higher conc
 
 | Model | Patch Size | Resolution | Data | HuggingFace | Weights |
 |-------|------------|------------|------|-------------|---------|
+| webssl-dino300m-light2b-224 | 14x14 | 224x224 | 2B (MC-2B light) | [Link](https://huggingface.co/facebook/webssl-dino300m-light2b-224) | [Link](https://dl.fbaipublicfiles.com/webssl/webssl_dino300m_light2b_224.pth) |
 | webssl-dino2b-light2b-224 | 14x14 | 224x224 | 2B (MC-2B light) | [Link](https://huggingface.co/facebook/webssl-dino2b-light2b-224) | [Link](https://dl.fbaipublicfiles.com/webssl/webssl_dino2b_light2b_224.pth) |
 | webssl-dino2b-heavy2b-224 | 14x14 | 224x224 | 2B (MC-2B heavy) | [Link](https://huggingface.co/facebook/webssl-dino2b-heavy2b-224) | [Link](https://dl.fbaipublicfiles.com/webssl/webssl_dino2b_heavy2b_224.pth) |
 | webssl-dino3b-light2b-224 | 14x14 | 224x224 | 2B (MC-2B light) | [Link](https://huggingface.co/facebook/webssl-dino3b-light2b-224) | [Link](https://dl.fbaipublicfiles.com/webssl/webssl_dino3b_light2b_224.pth) |

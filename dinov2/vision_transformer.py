@@ -16,6 +16,8 @@ import torch.nn.functional as F
 import torch.utils.checkpoint
 from torch.nn.init import trunc_normal_
 
+from huggingface_hub import hf_hub_download
+
 from dinov2.layers import Mlp, PatchEmbed, SwiGLUFFNFused, MemEffAttention, NestedTensorBlock as Block
 
 
@@ -351,7 +353,7 @@ def init_weights_vit_timm(module: nn.Module, name: str = ""):
         if module.bias is not None:
             nn.init.zeros_(module.bias)
 
-def webssl_dino300m_full2b_224(img_size=224, patch_size=14, num_register_tokens=0, **kwargs):
+def webssl_dino300m_full2b_224(img_size=224, patch_size=14, num_register_tokens=0, pretrained=True, **kwargs):
     """
     Web-DINO ViT-300M
     DINOv2's "large" architecture / ViT-L
@@ -373,6 +375,11 @@ def webssl_dino300m_full2b_224(img_size=224, patch_size=14, num_register_tokens=
         num_register_tokens=num_register_tokens,
         **kwargs,
     )
+    if pretrained:
+        filepath = hf_hub_download(repo_id="facebook/webssl-dino300m-full2-224-pt", filename="dinov2_vitg_300m.pth")
+        state_dict = torch.load(filepath, map_location="cpu")
+        model.load_state_dict(state_dict)
+    
     return model
 
 
